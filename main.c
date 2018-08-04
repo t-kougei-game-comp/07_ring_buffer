@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 enum{
-    BUFFER_SIZE = 11,
+    BUFFER_SIZE = 10+1,
 };
 
 typedef struct{
