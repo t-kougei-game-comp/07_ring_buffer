@@ -35,7 +35,7 @@ int ring_buffer_read(ring_buffer *p){
 int ring_buffer_get(ring_buffer *p, int idx){
     int num = p->tail + BUFFER_SIZE - p->head; if(BUFFER_SIZE <= num) num -= BUFFER_SIZE;
     if(num <= idx) return -1;
-    return p->buf[(p->tail - idx) % BUFFER_SIZE];
+    return p->buf[(p->tail + idx) % BUFFER_SIZE];
 }
 
 
