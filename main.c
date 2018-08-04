@@ -33,7 +33,8 @@ int ring_buffer_read(ring_buffer *p){
 }
 // リングバッファに追加された順にデータを参照する（-1はデータがなかった場合）
 int ring_buffer_get(ring_buffer *p, int idx){
-    if(BUFFER_SIZE <= idx) return -1;
+    int num = p->tail + BUFFER_SIZE - p->head; if(BUFFER_SIZE <= num) num -= BUFFER_SIZE;
+    if(num <= idx) return -1;
     return p->buf[(p->tail - idx) % BUFFER_SIZE];
 }
 
