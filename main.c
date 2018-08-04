@@ -26,7 +26,7 @@ bool ring_buffer_write(ring_buffer *p, int n){
 }
 // データを取り出す（-1はデータがなかった場合）
 int ring_buffer_read(ring_buffer *p){
-    if(p->head == p->tail) return false;
+    if(p->head == p->tail) return -1;
     int v = p->buf[p->tail];
     p->tail = (p->tail + 1) % BUFFER_SIZE;
     return v;
