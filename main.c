@@ -31,7 +31,7 @@ int ring_buffer_read(ring_buffer *p){
     p->tail = (p->tail + 1) % BUFFER_SIZE;
     return v;
 }
-// スタックの上から数えたデータを参照する（-1はデータがなかった場合）
+// リングバッファに追加された順にデータを参照する（-1はデータがなかった場合）
 int ring_buffer_get(ring_buffer *p, int idx){
     if(BUFFER_SIZE <= idx) return -1;
     return p->buf[(p->tail - idx) % BUFFER_SIZE];
